@@ -7,10 +7,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     try {
       const { quizId: id } = req.query;
+
+      if (id.length != 24) {
+        return res
+          .status(400)
+          .json({ error: "quizz Id must be 24 digits long" });
+      }
       const quiz = await Quiz.findById(id);
 
-      if (quiz.length === 0) {
-        return res.status(200).json({ msg: "No quiz found" });
+      if (!quiz) {
+        return res.status(400).json({ msg: "No quiz found" });
       }
 
       return res.status(200).json(quiz);
