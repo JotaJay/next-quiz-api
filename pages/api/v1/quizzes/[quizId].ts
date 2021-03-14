@@ -4,22 +4,13 @@ import "../../../../db/db.ts";
 import Quiz from "../../../../models/quiz.model";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === "POST") {
-    const body = req.body;
-    const { title, difficulty, type, category, questions } = body;
-
-    try {
-      const quiz = new Quiz({ title, difficulty, type, category, questions });
-
-      await quiz.save();
-
-      res.status(200).json(quiz);
-    } catch (err) {
-      return res.status(500).json(err);
-    }
-  }
-
   if (req.method === "GET") {
+    if (!req.query) {
+      return res
+        .status(400)
+        .json({ error: "quizId is required as query param" });
+    }
+    return res.json(req.query);
     try {
       const quizzes = await Quiz.find();
 
