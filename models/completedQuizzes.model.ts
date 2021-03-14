@@ -14,6 +14,5 @@ const completedQuizzes = new mongoose.Schema({
   score: Number,
 });
 
-const CompletedQuizzes = mongoose.model("CompletedQuizzes", completedQuizzes);
-
-export default CompletedQuizzes;
+export default mongoose.models["CompletedQuizzes"] ||
+  mongoose.model("CompletedQuizzes", completedQuizzes);
