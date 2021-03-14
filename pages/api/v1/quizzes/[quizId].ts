@@ -5,20 +5,15 @@ import Quiz from "../../../../models/quiz.model";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
-    if (!req.query) {
-      return res
-        .status(400)
-        .json({ error: "quizId is required as query param" });
-    }
-    return res.json(req.query);
     try {
-      const quizzes = await Quiz.find();
+      const { quizId: id } = req.query;
+      const quiz = await Quiz.findById(id);
 
-      if (quizzes.length === 0) {
+      if (quiz.length === 0) {
         return res.status(200).json({ msg: "No quiz found" });
       }
 
-      return res.status(200).json(quizzes);
+      return res.status(200).json(quiz);
     } catch (err) {
       return res.status(500).json(err);
     }
