@@ -18,4 +18,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(500).json(err);
     }
   }
+
+  if (req.method === "GET") {
+    try {
+      const completedQuizzes = await CompletedQuizzes.find();
+
+      return res.status(200).json(completedQuizzes);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
 };
