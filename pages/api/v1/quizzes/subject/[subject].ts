@@ -11,10 +11,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const quiz = await Quiz.find({ subject }).exec();
       console.log("subject", quiz);
 
-      if (!quiz) {
-        return res.status(400).json({ msg: "No quiz found" });
-      }
-
       return res.status(200).json(quiz);
     } catch (err) {
       return res.status(500).json(err);
