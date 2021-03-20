@@ -6,10 +6,17 @@ import Quiz from "../../../../models/quiz.model";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const body = req.body;
-    const { title, difficulty, type, category, questions } = body;
+    const { subject, title, difficulty, type, category, questions } = body;
 
     try {
-      const quiz = new Quiz({ title, difficulty, type, category, questions });
+      const quiz = new Quiz({
+        subject,
+        title,
+        difficulty,
+        type,
+        category,
+        questions,
+      });
 
       await quiz.save();
 
