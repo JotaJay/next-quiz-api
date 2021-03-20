@@ -26,6 +26,11 @@ const quizSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  subCategory: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   difficulty: {
     type: String,
     required: true,
