@@ -52,15 +52,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "PATCH") {
     try {
       const { quizId: id } = req.query;
-      const {
-        subject,
-        title,
-        difficulty,
-        type,
-        category,
-        subCategory,
-        questions,
-      } = req.body;
+      const updates = Object.keys(req.body);
+      const newQuiz = req.body;
 
       if (id.length != 24) {
         return res
@@ -73,21 +66,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(400).json({ msg: "No quiz found" });
       }
 
-      const newQuiz = new Quiz({
-        subject,
-        title,
-        difficulty,
-        type,
-        category,
-        subCategory,
-        questions,
+      updates.forEach((prop) => {
+        quiz[prop] = newQuiz[prop];
       });
 
-      const updatedQuiz = Object.assign(quiz, newQuiz);
+      await quiz.save();
 
-      await updatedQuiz.save({ new: true });
-
-      return res.status(200).json(updatedQuiz);
+      return res.status(200).json(quiz);
     } catch (err) {
       return res.status(500).json(err);
     }
