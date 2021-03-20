@@ -24,4 +24,28 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(500).json(err);
     }
   }
+
+  if (req.method === "DELETE") {
+    try {
+      const { quizId: id } = req.query;
+
+      if (id.length != 24) {
+        return res
+          .status(400)
+          .json({ error: "quizz Id must be 24 digits long" });
+      }
+
+      const quiz = await Quiz.findById(id);
+
+      if (!quiz) {
+        return res.status(400).json({ msg: "No quiz found" });
+      }
+
+      await Quiz.deleteOne(quiz);
+
+      return res.status(200).json(quiz);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
 };
