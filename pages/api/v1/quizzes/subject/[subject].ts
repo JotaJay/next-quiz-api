@@ -9,7 +9,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const { subject } = req.query;
 
       const quiz = await Quiz.find({ subject }).exec();
-      console.log("subject", quiz);
 
       return res.status(200).json(quiz);
     } catch (err) {
