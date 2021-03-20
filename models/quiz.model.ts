@@ -15,32 +15,38 @@ const quizSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
   },
   subject: {
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
   },
   category: {
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
   },
   subCategory: {
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
   },
   difficulty: {
     type: String,
     required: true,
     trim: true,
     enum: ["easy", "medium", "hard"],
+    lowercase: true,
   },
   type: {
     type: String,
     required: true,
     trim: true,
+    lowercase: true,
   },
   questions: [questionsSchema],
 });
