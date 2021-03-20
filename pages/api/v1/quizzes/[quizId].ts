@@ -48,4 +48,48 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(500).json(err);
     }
   }
+
+  if (req.method === "PATCH") {
+    try {
+      const { quizId: id } = req.query;
+      const {
+        subject,
+        title,
+        difficulty,
+        type,
+        category,
+        subCategory,
+        questions,
+      } = req.body;
+
+      if (id.length != 24) {
+        return res
+          .status(400)
+          .json({ error: "quizz Id must be 24 digits long" });
+      }
+      const quiz = await Quiz.findById(id);
+
+      if (!quiz) {
+        return res.status(400).json({ msg: "No quiz found" });
+      }
+
+      const newQuiz = new Quiz({
+        subject,
+        title,
+        difficulty,
+        type,
+        category,
+        subCategory,
+        questions,
+      });
+
+      const updatedQuiz = Object.assign(quiz, newQuiz);
+
+      await updatedQuiz.save({ new: true });
+
+      return res.status(200).json(updatedQuiz);
+    } catch (err) {
+      return res.status(500).json(err);
+    }
+  }
 };
