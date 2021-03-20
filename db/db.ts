@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const connectionString = "mongodb://localhost:27017/quizapp";
+const connectionString = process.env.NODE_ENV;
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
