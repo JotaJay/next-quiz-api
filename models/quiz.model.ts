@@ -16,6 +16,11 @@ const quizSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  subject: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   category: {
     type: String,
     required: true,

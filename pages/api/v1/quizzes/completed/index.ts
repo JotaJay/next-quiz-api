@@ -18,19 +18,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(500).json(err);
     }
   }
-
-  if (req.method === "GET") {
-    const completedQuizzes = await CompletedQuizzes.aggregate([
-      {
-        $lookup: {
-          from: "users",
-          localField: "user",
-          foreignField: "_id",
-          as: "user_account",
-        },
-      },
-    ]);
-
-    return res.json(completedQuizzes);
-  }
 };
