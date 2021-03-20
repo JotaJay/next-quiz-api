@@ -1,19 +1,19 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse } from "next";
 import "../../../../../db/db.ts";
-import Quiz from "../../../../../models/quiz.model";
+import CompletedQuizzes from "../../../../../models/completedQuizzes.model";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     try {
-      const { quizId: id } = req.query;
+      const { quizid: id } = req.query;
 
       if (id.length != 24) {
         return res
           .status(400)
           .json({ error: "quizz Id must be 24 digits long" });
       }
-      const quiz = await Quiz.findById(id);
+      const quiz = await CompletedQuizzes.findById(id);
 
       if (!quiz) {
         return res.status(400).json({ msg: "No quiz found" });
@@ -27,7 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === "DELETE") {
     try {
-      const { quizId: id } = req.query;
+      const { quizid: id } = req.query;
 
       if (id.length != 24) {
         return res
@@ -35,13 +35,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           .json({ error: "quizz Id must be 24 digits long" });
       }
 
-      const quiz = await Quiz.findById(id);
+      const quiz = await CompletedQuizzes.findById(id);
 
       if (!quiz) {
         return res.status(400).json({ msg: "No quiz found" });
       }
 
-      await Quiz.deleteOne(quiz);
+      await CompletedQuizzes.deleteOne(quiz);
 
       return res.status(200).json(quiz);
     } catch (err) {
