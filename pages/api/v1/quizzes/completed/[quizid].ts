@@ -49,7 +49,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
 
-  if (req.method === "PATCH") {
+  if (req.method === "PUT") {
     try {
       const { quizid: id } = req.query;
       delete req.body["_id"];
@@ -78,4 +78,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(500).json(err);
     }
   }
+
+  return res.status(405).json({});
 };

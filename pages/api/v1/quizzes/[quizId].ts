@@ -49,7 +49,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
 
-  if (req.method === "PATCH") {
+  if (req.method === "PUT") {
     try {
       const { quizId: id } = req.query;
       const updates = Object.keys(req.body);
@@ -77,4 +77,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(500).json(err);
     }
   }
+  return res.status(405).json({});
 };
