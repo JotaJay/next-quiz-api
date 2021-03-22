@@ -49,6 +49,10 @@ const quizSchema = new mongoose.Schema({
     lowercase: true,
   },
   questions: [questionsSchema],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 export default mongoose.models["Quiz"] || mongoose.model("Quiz", quizSchema);
