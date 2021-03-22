@@ -18,6 +18,8 @@ npm run dev
 yarn dev
 ```
 
+## API Endpoints
+
 As of now the API offers the following endpoints:
 
 ## Quiz
