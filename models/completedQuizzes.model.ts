@@ -12,6 +12,10 @@ const completedQuizzes = new mongoose.Schema({
     required: true,
   },
   score: Number,
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 export default mongoose.models["CompletedQuizzes"] ||
