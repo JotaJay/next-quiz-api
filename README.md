@@ -20,6 +20,10 @@ npm run dev
 yarn dev
 ```
 
+## Entity Relation Diagram
+
+![Diagram](https://github.com/jotajay/next-quiz-api/public/Diagram.png?raw=true)
+
 ## API Endpoints
 
 As of now the API offers the following endpoints:
