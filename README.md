@@ -22,7 +22,7 @@ yarn dev
 
 ## Entity Relation Diagram
 
-![Diagram](https://github.com/jotajay/next-quiz-api/public/Diagram.png?raw=true)
+![Diagram](https://github.com/JotaJay/next-quiz-api/blob/main/public/Diagram.png)
 
 ## API Endpoints
 
