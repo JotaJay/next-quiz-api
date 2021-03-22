@@ -1,3 +1,5 @@
+### Quiz APP Serverless API
+
 This is an example of a serverless Quiz API created using [Next.js](https://nextjs.org/) and [MongoDB](https://www.mongodb.com).
 
 ## Starting the project
