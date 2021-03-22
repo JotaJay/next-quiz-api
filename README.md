@@ -1,4 +1,4 @@
-### Quiz APP Serverless API
+### WIP Quiz APP Serverless API
 
 This is an example of a serverless Quiz API created using [Next.js](https://nextjs.org/) and [MongoDB](https://www.mongodb.com).
 
@@ -23,6 +23,12 @@ yarn dev
 ## API Endpoints
 
 As of now the API offers the following endpoints:
+
+## User
+
+- `POST /users`: Create a new user
+- `GET /users/{id}`: Get user by id
+- `GET /users`: Get all users
 
 ## Quiz
 
