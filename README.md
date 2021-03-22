@@ -50,4 +50,4 @@ As of now the API offers the following endpoints:
 - `GET /quizzes/completed/{id}`: Get completed quiz by id
 - `PUT /quizzes/completed/{id}`: Update completed quiz by id
 - `DELETE /quizzes/completed/{id}`: Delete completed quiz by id
-- `GET /quizzes/completed/user/{id}`: Get completed quiz by id
+- `GET /quizzes/completed/user/{id}`: Get completed quiz by user id
