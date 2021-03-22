@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
     unieque: true,
     trim: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 export default mongoose.models["User"] || mongoose.model("User", userSchema);
