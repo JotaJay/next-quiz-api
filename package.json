@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint pages/**/*.ts",
+    "lint:fix": "eslint pages/**/*.ts --fix"
   },
   "dependencies": {
     "mongodb": "^3.6.4",
@@ -20,6 +22,12 @@
     "@types/next-auth": "^3.7.2",
     "@types/node": "^14.14.32",
     "@types/react": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1",
     "typescript": "^4.2.3"
   }
 }
